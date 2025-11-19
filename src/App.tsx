@@ -1,7 +1,7 @@
 import { FaMoon, FaRegMoon, FaSun } from "react-icons/fa";
 import Table from "./components/table";
 import { useState } from "react";
-import DynamicTable from "./components/dynamic-table";
+import { DynamicTable } from "./components/dynamic-table";
 
 const App = () => {
     const [isOn, setIsOn] = useState(true);
@@ -15,6 +15,17 @@ const App = () => {
         }
     };
 
+    const usuarios = [
+        { id: 1, Nombre: "Christian", Edad: 22, Genero: "M", Ocupacion: "Dev" },
+        { id: 2, Nombre: "Mariana", Edad: 28, Genero: "F", Ocupacion: "Lead" },
+        { id: 3, Nombre: "Pedro", Edad: 35, Genero: "M", Ocupacion: "Manager" },
+    ];
+
+    const productos = [
+        { SKU: "A123", Producto: "Laptop Gamer", Precio: 1500, Stock: 5 },
+        { SKU: "B456", Producto: "Mouse Inalámbrico", Precio: 25, Stock: 100 },
+    ];
+
     return (
         <>
             <nav className="sticky top-0  dark:bg-slate-900 h-15 flex items-center justify-end px-20">
@@ -27,7 +38,7 @@ const App = () => {
 
             </nav>
             {/* <Table /> */}
-            <DynamicTable />
+            <DynamicTable data={usuarios} />
         </>
     )
 }
