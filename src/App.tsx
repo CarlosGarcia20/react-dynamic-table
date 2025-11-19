@@ -1,6 +1,7 @@
 import { FaMoon, FaRegMoon, FaSun } from "react-icons/fa";
 import Table from "./components/table";
 import { useState } from "react";
+import DynamicTable from "./components/dynamic-table";
 
 const App = () => {
     const [isOn, setIsOn] = useState(true);
@@ -25,7 +26,8 @@ const App = () => {
                 </a>
 
             </nav>
-            <Table />
+            {/* <Table /> */}
+            <DynamicTable />
         </>
     )
 }
