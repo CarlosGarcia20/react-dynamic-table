@@ -15,7 +15,7 @@ const App = () => {
             document.querySelector('html')?.classList.add('dark')
         }
     };
-    
+
     const matrixTheme = {
         theadColor: "bg-red-500",
         theadTextColor: "text-stone-950",
@@ -56,7 +56,7 @@ const App = () => {
             })
             .catch(error => console.error("Error cargando datos:", error));
     }, []);
-    
+
     // Datos de la PokeAPI
     // const [pokemonData, setPokemonData] = useState([]);
     // useEffect(() => {
@@ -94,7 +94,7 @@ const App = () => {
 
     return (
         <div className="flex flex-row h-screen w-screen">
-            <div className="dark:bg-slate-800 w-80 mx-5 my-20 rounded-xl shadow-xl/20 p-5 flex flex-col gap-4 ">
+            <div className="dark:bg-slate-800 w-80 mx-5 my-10 rounded-xl shadow-xl/20 p-5 flex flex-col gap-4 ">
                 <div className="flex flex-row justify-between items-center">
                     <h1 className="dark:text-white text-slate-900 font-bold text-2xl">Propiedades</h1>
                     <a
@@ -105,7 +105,7 @@ const App = () => {
                     </a>
                 </div>
                 {/* body propierties */}
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 overflow-auto">
                     <h1 className="dark:text-white text-lg font-semibold">Colores</h1>
                     <div className="flex flex-row justify-center gap-5">
                         <div className="flex flex-col justify-center items-center">
@@ -139,8 +139,41 @@ const App = () => {
                             />
                         </div>
                     </div>
+                    <h1 className="dark:text-white text-lg font-semibold">Colores tema obscuro</h1>
+                    <div className="flex flex-row justify-center gap-5">
+                        <div className="flex flex-col justify-center items-center">
+                            <label className="dark:text-white" htmlFor="darkText">Texto</label>
+                            <input
+                                type="color"
+                                id="darkText"
+                                name="darkText"
+                                value={colorThead}
+                                className="cursor-pointer"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-center items-center">
+                            <label className="dark:text-white" htmlFor="darkThead">Títulos</label>
+                            <input
+                                type="color"
+                                id="darkThead"
+                                name="darkThead"
+                                value={colorThead}
+                                className="cursor-pointer"
+                            />
+                        </div>
+                        <div className="flex flex-col justify-center items-center">
+                            <label className="dark:text-white" htmlFor="darkRows">Filas</label>
+                            <input
+                                type="color"
+                                id="darkRows"
+                                name="darkRows"
+                                value={colorThead}
+                                className="cursor-pointer"
+                            />
+                        </div>
+                    </div>
                     <h1 className="dark:text-white text-lg font-semibold">Datos</h1>
-                    <div className="flex flex-col gap-4" >
+                    <div className="flex flex-col gap-4 overflow-y-auto" >
                         <textarea
                             className="dark:bg-slate-700 dark:text-white rounded-lg w-full border border-gray-300 p-3"
                             name="thead" rows={10}
@@ -154,8 +187,9 @@ const App = () => {
                     </div>
                 </div>
             </div>
-            <div className=" w-full h-full"></div>
-            <DynamicTable data={usuariosApi} theme={matrixTheme} />
+            <div className=" w-full h-full">
+                <DynamicTable data={usuariosApi} theme={matrixTheme} />
+            </div>
         </div>
     )
 }
