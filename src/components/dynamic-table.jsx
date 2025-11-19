@@ -1,17 +1,7 @@
-// src/components/AutoTable.jsx
 import React from 'react';
 
-export const DynamicTable = ({ data }) => {
-
-    console.log(data);
-
-    if (!data || data.length === 0) {
-        return (
-            <div className="p-4 text-center text-slate-500 bg-slate-800 rounded-lg border border-slate-700">
-                No hay datos para mostrar.
-            </div>
-        );
-    }
+export const DynamicTable = ({ data, theme = {} }) => {
+    if (!data || data.length === 0) return <div className="text-white">No hay datos</div>;
 
     const columns = Object.keys(data[0]);
 
@@ -21,6 +11,14 @@ export const DynamicTable = ({ data }) => {
         return value;
     };
 
+    const defaultTheme = {
+        theadColor: "bg-slate-950",
+        theadTextColor: "text-slate-100",
+        bodyColor: "hover:bg-slate-700/50"
+    };
+
+    const finalTheme = { ...defaultTheme, ...theme };
+
     return (
         <div className='min-h-screen text-slate-200 flex justify-center items-center p-5'>
             <div className='w-full max-w-4xl'>
@@ -29,7 +27,7 @@ export const DynamicTable = ({ data }) => {
                 </h1>
                 <div className="overflow-x-auto rounded-xl border border-slate-700 shadow-xl bg-slate-800/50 backdrop-blur-sm">
                     <table className="min-w-full text-left text-sm whitespace-nowrap">
-                        <thead className="bg-slate-950 text-slate-100 uppercase font-medium">
+                        <thead className={`${finalTheme.theadColor} ${finalTheme.theadTextColor} uppercase font-medium`}>
                             <tr>
                                 {columns.map((col, index) => (
                                     <th key={index} className="px-6 py-4">
@@ -38,9 +36,9 @@ export const DynamicTable = ({ data }) => {
                                 ))}
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-slate-700">
+                        <tbody className="divide-y {divide-slate-700}">
                             {data.map((row, rowIndex) => (
-                                <tr key={rowIndex} className="hover:bg-slate-700/50 transition-colors">
+                                <tr key={rowIndex} className={`${finalTheme.bodyColor} transition-colors`}>
                                     {columns.map((col, colIndex) => (
                                         <td key={`${rowIndex}-${colIndex}`} className="px-6 py-4 text-slate-300">
                                             {renderCell(row, col)}
