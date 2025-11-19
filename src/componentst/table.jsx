@@ -1,9 +1,9 @@
 
 function Table() {
     const users = [
-        { id: 1, name: "Ana García", role: "Desarrolladora", status: "Activo" },
-        { id: 2, name: "Carlos López", role: "Diseñador", status: "Inactivo" },
-        { id: 3, name: "María Rodriguez", role: "Product Owner", status: "Activo" },
+        { id: 1, name: "Christian Lugo", role: "Desarrollador", status: "Activo" },
+        { id: 2, name: "Carlos Garcia", role: "Project Manager", status: "Inactivo" },
+        { id: 3, name: "Fernando Soto", role: "Conserje", status: "Activo" },
     ];
 
     return (
