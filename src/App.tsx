@@ -15,8 +15,7 @@ const App = () => {
             document.querySelector('html')?.classList.add('dark')
         }
     };
-
-    // DEFINIMOS UN TEMA TIPO "MATRIX" (Solo por diversión)
+    
     const matrixTheme = {
         theadColor: "bg-red-500",
         theadTextColor: "text-stone-950",
@@ -156,6 +155,7 @@ const App = () => {
                 </div>
             </div>
             <div className=" w-full h-full"></div>
+            <DynamicTable data={usuariosApi} theme={matrixTheme} />
         </div>
     )
 }
