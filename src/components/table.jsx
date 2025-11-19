@@ -1,4 +1,3 @@
-
 function Table() {
     const usuarios = [
         {
@@ -89,7 +88,7 @@ function Table() {
     ];
 
     return (
-        <div className="min-h-screen bg-slate-900 text-slate-200 flex justify-center items-center p-5">
+        <div className="min-h-screen text-slate-200 flex justify-center items-center p-5">
             <div className="w-full max-w-4xl">
                 <h1 className="text-3xl font-bold mb-8 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                     React Auto Table
