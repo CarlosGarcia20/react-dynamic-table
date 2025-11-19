@@ -16,12 +16,6 @@ const App = () => {
         }
     };
 
-    const matrixTheme = {
-        theadColor: "bg-red-500",
-        theadTextColor: "text-stone-950",
-        bodyColor: "text-cyan-700 hover:bg-cyan-900/30 font-mono",
-    };
-
     const usuarios = [
         { id: 1, Nombre: "Christian", Edad: 22, Genero: "M", Ocupacion: "Dev" },
         { id: 2, Nombre: "Mariana", Edad: 28, Genero: "F", Ocupacion: "Lead" },
@@ -91,108 +85,30 @@ const App = () => {
 
     //     fetchPokemons();
     // }, []);
+    const handleOnclick = (row: any) => {
+        console.log(row)
+    }
 
     return (
-        <div className="flex flex-row h-screen w-screen">
-            <div className="dark:bg-slate-800 w-80 mx-5 my-10 rounded-xl shadow-xl/20 p-5 flex flex-col gap-4 ">
-                <div className="flex flex-row justify-between items-center">
-                    <h1 className="dark:text-white text-slate-900 font-bold text-2xl">Propiedades</h1>
-                    <a
-                        className="hover:scale-110 cursor-pointer transition ease-in-out dark:text-white text-slate-900"
-                        onClick={handleToggle}
-                    >
-                        {isOn ? <FaSun size={25} /> : <FaMoon size={25} />}
-                    </a>
-                </div>
-                {/* body propierties */}
-                <div className="flex flex-col gap-4 overflow-auto">
-                    <h1 className="dark:text-white text-lg font-semibold">Colores</h1>
-                    <div className="flex flex-row justify-center gap-5">
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="text">Texto</label>
-                            <input
-                                type="color"
-                                id="text"
-                                name="text"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="thead">Títulos</label>
-                            <input
-                                type="color"
-                                id="thead"
-                                name="thead"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="rows">Filas</label>
-                            <input
-                                type="color"
-                                id="rows"
-                                name="rows"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                    </div>
-                    <h1 className="dark:text-white text-lg font-semibold">Colores tema obscuro</h1>
-                    <div className="flex flex-row justify-center gap-5">
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="darkText">Texto</label>
-                            <input
-                                type="color"
-                                id="darkText"
-                                name="darkText"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="darkThead">Títulos</label>
-                            <input
-                                type="color"
-                                id="darkThead"
-                                name="darkThead"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                        <div className="flex flex-col justify-center items-center">
-                            <label className="dark:text-white" htmlFor="darkRows">Filas</label>
-                            <input
-                                type="color"
-                                id="darkRows"
-                                name="darkRows"
-                                value={colorThead}
-                                className="cursor-pointer"
-                            />
-                        </div>
-                    </div>
-                    <h1 className="dark:text-white text-lg font-semibold">Datos</h1>
-                    <div className="flex flex-col gap-4 overflow-y-auto" >
-                        <textarea
-                            className="dark:bg-slate-700 dark:text-white rounded-lg w-full border border-gray-300 p-3"
-                            name="thead" rows={10}
-                            defaultValue="Títulos"
-                        />
-                        <textarea
-                            className="dark:bg-slate-700 dark:text-white rounded-lg w-full border border-gray-300 p-3"
-                            name="rows" rows={10}
-                            defaultValue="Filas"
-                        />
-                    </div>
-                </div>
-            </div>
-            <div className=" w-full h-full">
-                <DynamicTable 
-                    // header={['Producto', 'Precio', 'Stock', 'Estado']}
-                    data={usuarios}   
+        <div className="h-screen w-screen px-30">
+            <nav className="sticky dark:bg-slate-900 bg-gray-200 z-10 top-0 w-full h-fit mt-20 p-10 flex flex-row items-center justify-center px-50 gap-20">
+                <h1 className="text-4xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 dark:from-blue-400 dark:to-emerald-400 to-emerald-700">
+                    React Auto Table
+                </h1>
+                <a
+                    className="hover:scale-110 cursor-pointer transition ease-in-out dark:text-white text-slate-900"
+                    onClick={handleToggle}
                 >
-                </DynamicTable>
+                    {isOn ? <FaSun size={25} /> : <FaMoon size={25} />}
+                </a>
+            </nav>
+            <div className="flex flex-1 flex-col gap-10 justify-center">
+                <DynamicTable
+                    titles={["hola", "clanty"]}
+                    data={usuariosApi}
+                    onClickRow={handleOnclick}
+                />
+                <DynamicTable />
             </div>
         </div>
     )
